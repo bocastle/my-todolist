@@ -7,15 +7,15 @@ class TodoItem extends Component {
         return this.props.checked !== nextProps.checked;
     }    
     render() {
-        const { text, checked, id2, onToggle, onRemove } = this.props;
+        const { text, checked, id, onToggle, onRemove } = this.props;
         
-        console.log(id2);
+        console.log(id);
 
         return(
-            <div className="todo-item" onClick={() => onToggle(id2)}>
+            <div className="todo-item" onClick={() => onToggle(id)}>
                 <div className="remove" onClick={(e) => {
                     e.stopPropagation(); // onToggle 이 실행되지 않도록 합니다.
-                    onRemove(id2)}
+                    onRemove(id)}
                 }>&times;</div>
                 <div className={`todo-text ${checked && 'checked'}`}>
                     <div>{text}</div>
