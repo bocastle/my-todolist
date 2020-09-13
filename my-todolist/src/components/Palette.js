@@ -1,18 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react'; // { Component } 이해가...ㅠㅠ
 import './Palette.css';
 
-class Palette extends Component {
+    const Color = ({ color, active, onClick }) => {
 
-    render () {
-
-        const Color = ({ color, active, onClick }) => {
-            /* 구현 */
-        }
-
-        const Palette = ({ colors, selected, onSelect }) => {
-          /* 구현 */  
-        };
+        return(
+            <div 
+                className={`color ${active && 'active'}`}
+                style={{background: color}} 
+                onClick={onClick}
+            > 
+            </div>
+        );
     }
+    const Palette = ({colors, selected, onSelect}) => {
+        const colorList = colors.map(
+            (color) => (<Color color={color} active={selected===color} onClick={() => onSelect(color)} key={color}></Color>)
+        );
+        return(
+            <div className="palette">
+                {colorList}
+            </div>
+        );
+    };
 
-}
 export default Palette;
